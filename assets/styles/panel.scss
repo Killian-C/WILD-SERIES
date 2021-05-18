@@ -1,0 +1,28 @@
+.panel-container {
+  position: relative;
+  height: 80vh;
+  top: 4rem;
+  z-index: 3;
+}
+.panel {
+  position: relative;
+  background: $bgColor;
+  color: $linkColor;
+  border-radius: 5px;
+  box-shadow:  1px 1px 3px #2b3035,
+  -1px -1px 3px #3b4247;
+  max-width: 381px;
+}
+.panel-button:hover + .panel-text {
+  color: $hoverColor;
+}
+.panel-picture-hover {
+  display: none;
+}
+.panel-button:hover .panel-picture-hover {
+  display: inline;
+  transform: scale(.98);
+}
+.panel-button:hover .panel-picture {
+  display: none;
+}

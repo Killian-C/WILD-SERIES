@@ -1,5 +1,43 @@
 {% extends 'base.html.twig' %}
 {% block title %}Wild Series{% endblock %}
 {% block body %}
-    <h1>Welcome wilder !</h1>
+    <div class="bg-filter"></div>
+    <img class="bg-home-page" src="{{ asset('build/mosaic.jpg') }}" alt="mosaic"/>
+    <div class="container panel-container d-flex align-items-center">
+        <div class="row d-flex align-items-center">
+            <div class="col-11 mx-auto panel d-flex justify-content-center align-items-center">
+                <div class="container">
+                    {% for i in 1..3 %}
+                        <div class="panel-section row d-flex align-items-center mx-auto my-5">
+                            <div role="button" class="panel-button col-4 text-center mx-2 p-2">
+                                {% if i == 1 %}
+                                    <img class="panel-picture-hover w-75 m-0" src="{{ asset('build/actorsHover.svg') }}" alt="actors">
+                                    <img class="panel-picture w-75" src="{{ asset('build/actors.svg') }}" alt="actors">
+                                {% elseif i == 2 %}
+                                    <img class="panel-picture-hover w-75 m-0" src="{{ asset('build/tvHover.svg') }}" alt="series">
+                                    <img class="panel-picture w-75" src="{{ asset('build/tv.svg') }}" alt="series">
+                                {% elseif i == 3 %}
+                                    <img class="panel-picture-hover w-75 m-0" src="{{ asset('build/heartHover.svg') }}" alt="favorites">
+                                    <img class="panel-picture w-75" src="{{ asset('build/heart.svg') }}" alt="favorites">
+                                {% endif %}
+                            </div>
+                            {% if i == 1 %}
+                                <h5 class="panel-text text-break col-7">
+                                    Actors
+                                </h5>
+                            {% elseif i == 2 %}
+                                <h5 class="panel-text text-break col-7">
+                                    Series
+                                </h5>
+                            {% elseif i == 3 %}
+                                <h5 class="panel-text text-break col-7">
+                                    Favorites series
+                                </h5>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

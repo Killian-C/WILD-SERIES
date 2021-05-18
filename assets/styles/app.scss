@@ -1,0 +1,27 @@
+@import "~bootstrap/scss/bootstrap";
+@import "variables";
+@import "navbar.scss";
+@import "home.scss";
+@import "panel.scss";
+* {
+    font-family: 'Lato', sans-serif;
+}
+body {
+    background-color: $bgColor;
+}
+
+a{
+    color: $linkColor;
+    text-decoration: none;
+}
+
+a:hover {
+    color: $hoverColor;
+    transition: all .5s ease;
+}
+
+h1 {
+    color: $linkColor;
+}
+
+

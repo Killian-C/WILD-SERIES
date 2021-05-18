@@ -1,0 +1,33 @@
+.navbar {
+  background-color: $bgColor;
+  border-bottom: 1px solid #30353b;
+}
+
+.navbar a {
+  font-size: 1.2rem;
+}
+
+.logo, .panel-picture {
+  max-width: 180px;
+}
+
+.logo-bg, .panel-button {
+  background: #33393E;
+  box-shadow:  5px 5px 10px #2b3035,
+  -5px -5px 10px #3b4247;
+  border-radius: 7px;
+}
+.logo-bg:hover, .panel-button:hover {
+  box-shadow: inset 5px 5px 10px #2b3035,
+  inset -5px -5px 10px #3b4247;
+  transition-property: all;
+  transition-duration: 1s;
+  transition-timing-function: ease;
+}
+.logo-bg:hover .logo, .panel-button:hover .panel-picture{
+  transform: scale(.98);
+}
+.sub-logo {
+  color: $hoverColor;
+  font-size: 2rem;
+}
