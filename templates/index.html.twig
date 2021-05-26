@@ -11,14 +11,20 @@
                         <div class="panel-section row d-flex align-items-center mx-auto my-5">
                             <div role="button" class="panel-button col-4 text-center mx-2 p-2">
                                 {% if i == 1 %}
-                                    <img class="panel-picture-hover w-75 m-0" src="{{ asset('build/actorsHover.svg') }}" alt="actors">
-                                    <img class="panel-picture w-75" src="{{ asset('build/actors.svg') }}" alt="actors">
+                                    <a href="#">
+                                        <img class="panel-picture-hover w-75 m-0" src="{{ asset('build/actorsHover.svg') }}" alt="actors">
+                                        <img class="panel-picture w-75" src="{{ asset('build/actors.svg') }}" alt="actors">
+                                    </a>
                                 {% elseif i == 2 %}
-                                    <img class="panel-picture-hover w-75 m-0" src="{{ asset('build/tvHover.svg') }}" alt="series">
-                                    <img class="panel-picture w-75" src="{{ asset('build/tv.svg') }}" alt="series">
+                                    <a href="{{ path('program_index') }}">
+                                        <img class="panel-picture-hover w-75 m-0" src="{{ asset('build/tvHover.svg') }}" alt="series">
+                                        <img class="panel-picture w-75" src="{{ asset('build/tv.svg') }}" alt="series">
+                                    </a>
                                 {% elseif i == 3 %}
-                                    <img class="panel-picture-hover w-75 m-0" src="{{ asset('build/heartHover.svg') }}" alt="favorites">
-                                    <img class="panel-picture w-75" src="{{ asset('build/heart.svg') }}" alt="favorites">
+                                    <a href="#">
+                                        <img class="panel-picture-hover w-75 m-0" src="{{ asset('build/heartHover.svg') }}" alt="favorites">
+                                        <img class="panel-picture w-75" src="{{ asset('build/heart.svg') }}" alt="favorites">
+                                    </a>
                                 {% endif %}
                             </div>
                             {% if i == 1 %}

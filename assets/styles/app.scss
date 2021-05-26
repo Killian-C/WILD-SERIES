@@ -5,6 +5,7 @@
 @import "panel.scss";
 * {
     font-family: 'Lato', sans-serif;
+    color: $linkColor;
 }
 body {
     background-color: $bgColor;
