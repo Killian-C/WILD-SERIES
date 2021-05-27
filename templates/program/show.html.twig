@@ -21,7 +21,7 @@
         <ul class="card-body">
             {% for season in seasons %}
                 <li class="my-5">
-                    <a class="panel-button p-3" href="{{ path('program_season_show', {programId: program.id, seasonId: season.id}) }}">
+                    <a class="panel-button p-3" href="{{ path('program_season_show', {'program': program.id, 'season': season.id}) }}">
                         Saison n°{{ season.number }}  ({{ season.year }})
                     </a>
                 </li>
