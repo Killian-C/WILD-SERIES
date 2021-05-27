@@ -2,12 +2,14 @@
 {% block title %}Série {{ program.title }} - Saison {{ season.number }}{% endblock %}
 
 {% block body %}
-    <h1>Saison n°{{ season.number }} de {{ program.title }}</h1>
-    <h4>Résumé de la saison : {{ season.description }}</h4>
-    <h4>Liste des épisodes : </h4>
-    <ul>
-        {% for episode in episodes %}
-            <li><strong>Episode n°{{ episode.number }}</strong> : {{ episode.synopsis }}</li>
-        {% endfor %}
-    </ul>
+    <h2 class="text-center">Saison n°{{ season.number }} de {{ program.title }}</h2>
+    <div class="d-flex align-items-center justify-content-center">
+        <p class="w-50 p-3">Résumé de la saison : {{ season.description }}</p>
+        <ul class="card p-3">
+            <h4>Liste des épisodes : </h4>
+            {% for episode in episodes %}
+                <li><strong>Episode n°{{ episode.number }}</strong> : {{ episode.title }}</li>
+            {% endfor %}
+        </ul>
+    </div>
 {% endblock %}
