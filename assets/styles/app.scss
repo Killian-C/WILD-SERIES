@@ -4,9 +4,11 @@
 @import "home.scss";
 @import "panel.scss";
 @import "cards.scss";
+@import "form.scss";
 * {
     font-family: 'Lato', sans-serif;
     color: $linkColor;
+    /*color : black;*/
 }
 body {
     background-color: $bgColor;
@@ -14,14 +16,14 @@ body {
 ul li {
     list-style-type: none;
 }
-a{
+a {
     color: $linkColor;
     text-decoration: none;
 }
 
 a:hover {
     color: $hoverColor;
-    transition: all .5s ease;
+    transition: all .5s;
 }
 
 h1 {

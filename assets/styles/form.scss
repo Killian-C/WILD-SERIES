@@ -1,0 +1,20 @@
+input, select, option, textarea {
+  color: $bgColor;
+}
+
+input[type=submit] {
+  color: $linkColor;
+  background: #33393E;
+  box-shadow:  5px 5px 10px #2b3035,
+  -5px -5px 10px #3b4247;
+  border-radius: 7px;
+}
+
+input[type=submit]:hover {
+  color: $hoverColor;
+  background: #33393E;
+  box-shadow: inset 5px 5px 10px #2b3035,
+  inset -5px -5px 10px #3b4247;
+  border-radius: 7px;
+}
+

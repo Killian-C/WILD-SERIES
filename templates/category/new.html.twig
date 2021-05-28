@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Nouvelle Categorie {% endblock %}
+
+{% block body %}
+    {{ form_start(form) }}
+    <div class="container form-container">
+        <div class="row mx-auto">
+            <div class="col-12 d-flex flex-column align-items-center justify-content-center my-3">
+                <div class="me-4">{{ form_label(form.name) }}</div>
+                {{ form_widget(form.name) }}
+            </div>
+            <input class=" col-6 offset-3 p-2 mx-auto my-2"  type="submit" value="Ajouter catégorie">
+        </div>
+    </div>
+    {{ form_end(form) }}
+{% endblock %}
