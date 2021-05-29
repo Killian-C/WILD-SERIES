@@ -9,10 +9,12 @@
                 <div class="col-12 d-flex flex-column align-items-center justify-content-center my-2">
                     <div class="me-4">{{ form_label(form.title) }}</div>
                     {{ form_widget(form.title) }}
+                    {{ form_errors(form.title) }}
                 </div>
                 <div class="col-12 d-flex flex-column align-items-center justify-content-center my-2">
                     <div class="me-4">{{ form_label(form.summary) }}</div>
                     {{ form_widget(form.summary) }}
+                    {{ form_errors(form.summary) }}
                 </div>
                 <div class="col-12 d-flex flex-column align-items-center justify-content-center my-2">
                     <div class="me-4">{{ form_label(form.poster) }}</div>
