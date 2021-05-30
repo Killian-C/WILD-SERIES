@@ -18,3 +18,30 @@ input[type=submit]:hover {
   border-radius: 7px;
 }
 
+#program_actors {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#program_actors label {
+  margin: .7rem;
+  padding: 1rem;
+  background: #33393E;
+  box-shadow:  5px 5px 10px #2b3035,
+  -5px -5px 10px #3b4247;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+#program_actors input:checked + label {
+  color: $hoverColor;
+  box-shadow: inset 5px 5px 10px #2b3035,
+  inset -5px -5px 10px #3b4247;
+}
+
+#program_actors input {
+  display: none;
+}
+

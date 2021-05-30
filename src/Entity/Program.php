@@ -33,7 +33,7 @@ class Program
     /**
      * @ORM\Column(type="text")
      * @Assert\NotBlank(message="Vous devez entrer une description")
-     * @Assert\Regex("/^\plus belle la vie/", message="On parle de vraies séries ici")
+     * @Assert\Regex("/^\plus belle la vie/", match=false, message="On parle de vraies séries ici")
      */
     private $summary;
 

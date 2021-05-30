@@ -24,6 +24,12 @@
                     <div class="me-4">{{ form_label(form.category) }}</div>
                     {{ form_widget(form.category) }}
                 </div>
+                <div class="col-12 d-flex flex-column align-items-center justify-content-center my-2">
+                    <div class="me-4">{{ form_label(form.actors) }}</div>
+                    <div class="w-75 d-flex justify-content-center align-items-center">
+                        {{ form_widget(form.actors) }}
+                    </div>
+                </div>
                 <div class="col-12 text-center my-3">
                     <input class="p-2 mx-auto" type="submit" value="Ajouter la série">
                 </div>
