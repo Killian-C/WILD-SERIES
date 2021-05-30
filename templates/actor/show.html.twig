@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ actor.name }}{% endblock %}
+
+{% block body %}
+    <div class="container d-flex flex-column">
+        <h2>{{ actor.name }}</h2>
+        <h4>Liste des séries / films dans lesquels iel a joué : </h4>
+        <ul>
+            {% for program in actor.programs %}
+                <a href="{{ path('program_show', {'id' : program.id}) }}"><li>{{ program.title }}</li></a>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
