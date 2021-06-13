@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
-{% block title %}Série #{{ program.id }}{% endblock %}
+{% block title %}{{ program.slug }}{% endblock %}
 
 {% block body %}
 <div class="d-flex justify-content-center align items center flex-column my-2">
@@ -21,7 +21,7 @@
         <ul class="card-body">
             {% for season in seasons %}
                 <li class="my-5">
-                    <a class="panel-button p-3" href="{{ path('program_season_show', {'program': program.id, 'season': season.id}) }}">
+                    <a class="panel-button p-3" href="{{ path('program_season_show', {'slug': program.slug, 'season': season.id}) }}">
                         Saison n°{{ season.number }}  ({{ season.year }})
                     </a>
                 </li>

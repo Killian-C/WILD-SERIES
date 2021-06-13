@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Program;
+use App\Service\Slugify;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
@@ -30,11 +31,20 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
         'https://fr.web.img6.acsta.net/pictures/20/01/10/10/23/0734068.jpg',
         'https://disney-planet.fr/wp-content/uploads/2021/02/affiche-scrubs-01.jpg',
     ];
+
+    private $slugify;
+
+    public function __construct(Slugify $slugify)
+    {
+        $this->slugify = $slugify;
+    }
+
     public function load(ObjectManager $manager)
     {
         foreach (self::TITLES as $key => $programName) {
             $program = new Program();
             $program->setTitle($programName);
+            $program->setSlug($this->slugify->generate($program->getTitle()));
             $program->setSummary(self::SUMMARIES[$key]);
             $program->setPoster(self::POSTERS[$key]);
             $program->setCategory($this->getReference('category_0'));

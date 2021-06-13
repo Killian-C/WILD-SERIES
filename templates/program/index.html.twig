@@ -14,7 +14,7 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ program.title }}</h5>
                         <p class="card-text">{{ program.summary }}</p>
-                        <a href="{{ path('program_show', {id : program.id})}}" class="panel-button p-2">Voir la fiche</a>
+                        <a href="{{ path('program_show', {slug : program.slug})}}" class="panel-button p-2">Voir la fiche</a>
                     </div>
                 </div>
             {% endfor %}
