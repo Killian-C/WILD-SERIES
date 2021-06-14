@@ -1,0 +1,9 @@
+{% extends 'component/newEntityMail.html.twig' %}
+
+{% block title %}New Episode{% endblock %}
+
+{% block body %}
+<h1>New episode {{ episode.title }} created !!! </h1>
+<p>Hello, the new program {{ episode.title }} has been created on Wild Series</p>
+<p>Summary : {{episode.synopsis }}</p>
+{% endblock %}
