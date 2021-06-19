@@ -36,6 +36,12 @@ class Category
     {
         $this->programs = new ArrayCollection();
     }
+
+    public function getIdName()
+    {
+        return $this->getId() . ' -- ' . $this->getName();
+    }
+
     /**
      * @return Collection|Program[]
      */

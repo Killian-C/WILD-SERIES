@@ -6,6 +6,11 @@
             </a>
             <div class="col text-center sub-logo">WILD SERIES</div>
         </div>
-        <a class="col-12 col-md-3 text-center" href="#">Connexion</a>
+        {% if app.user %}
+            {{ app.user.email }}
+            <a class="col-12 col-md-3 text-center" href="{{ path('app_logout') }}"> Se déconnecter</a>
+        {% else %}
+            <a class="col-12 col-md-3 text-center" href="{{ path('app_login') }}"> Se connecter</a>
+        {% endif %}
     </div>
 </nav>
