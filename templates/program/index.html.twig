@@ -3,7 +3,13 @@
 {% block title %}All programs{% endblock %}
 
 {% block body %}
-    <h2 class="text-center">Toutes les séries</h2>
+    <h2 class="text-center mt-3">Toutes les séries</h2>
+    <div class="text-center my-4">
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input class="py-2 px-4 mx-auto mt-4" type="submit" value="Trouve !">
+        {{ form_end(form) }}
+    </div>
     {% if programs is empty %}
         Aucune série trouvée.
     {% else %}
@@ -14,6 +20,12 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ program.title }}</h5>
                         <p class="card-text">{{ program.summary }}</p>
+                        <h6>Acteurs : </h6>
+                        <ul>
+                        {% for actor in program.actors %}
+                            <li>{{ actor.name }}</li>
+                        {% endfor %}
+                        </ul>
                         <a href="{{ path('program_show', {slug : program.slug})}}" class="panel-button p-2">Voir la fiche</a>
                     </div>
                 </div>
