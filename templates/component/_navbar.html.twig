@@ -8,6 +8,7 @@
         </div>
         {% if app.user %}
             {{ app.user.email }}
+            <a href="{{ path('user_profile') }}">Mon compte</a>
             <a class="col-12 col-md-3 text-center" href="{{ path('app_logout') }}"> Se déconnecter</a>
         {% else %}
             <a class="col-12 col-md-3 text-center" href="{{ path('app_login') }}"> Se connecter</a>

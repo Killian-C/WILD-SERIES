@@ -1,0 +1,7 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello {{ app.user.email }}!{% endblock %}
+
+{% block body %}
+ <h1>Vous êtes sur le profil de : {{ app.user.email }}</h1>
+{% endblock %}
