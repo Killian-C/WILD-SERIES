@@ -43,6 +43,7 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
     {
         foreach (self::TITLES as $key => $programName) {
             $program = new Program();
+            $program->setOwner($this->getReference('Sudo'));
             $program->setTitle($programName);
             $program->setSlug($this->slugify->generate($program->getTitle()));
             $program->setSummary(self::SUMMARIES[$key]);
@@ -63,6 +64,7 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
         return [
             ActorFixtures::class,
             CategoryFixtures::class,
+            UserFixtures::class,
         ];
     }
 }

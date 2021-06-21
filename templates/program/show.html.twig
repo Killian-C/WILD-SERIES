@@ -4,9 +4,12 @@
 {% block body %}
 <div class="d-flex justify-content-center align items center flex-column my-2">
     <h2 class="text-center">{{ program.title }}</h2>
-    <a class="text-center panel-button p-2 mx-auto" href="{{ path('program_index') }}">
+    <a class="my-2 text-center panel-button p-2 mx-auto" href="{{ path('program_index') }}">
         Retour à la liste des programmes
     </a>
+    {% if is_granted("ROLE_ADMIN") %}
+        <a class="my-2 text-center panel-button p-2 mx-auto" href="{{ path('program_edit', { 'slug': program.slug} ) }}">Éditer</a>
+    {%endif%}
 </div>
 <div class="d-flex justify-content-center mb-5">
     <div class="card mx-2">

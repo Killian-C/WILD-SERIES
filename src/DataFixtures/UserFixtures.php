@@ -35,6 +35,7 @@ class UserFixtures extends Fixture
             'adminpassword'
         ));
         $manager->persist($admin);
+        $this->addReference('Sudo', $admin);
 
         $manager->flush();
     }

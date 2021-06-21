@@ -63,6 +63,12 @@ class Program
      */
     private $slug;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="programs")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $owner;
+
 
     public function __construct()
     {
@@ -70,6 +76,7 @@ class Program
         $this->seasons = new ArrayCollection();
         $this->actors = new ArrayCollection();
     }
+
 
     public function getId(): ?int
     {
@@ -189,6 +196,18 @@ class Program
     public function setSlug(?string $slug): self
     {
         $this->slug = $slug;
+
+        return $this;
+    }
+
+    public function getOwner(): ?User
+    {
+        return $this->owner;
+    }
+
+    public function setOwner(?User $owner): self
+    {
+        $this->owner = $owner;
 
         return $this;
     }

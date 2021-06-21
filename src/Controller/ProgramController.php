@@ -10,6 +10,7 @@ use App\Form\CommentType;
 use App\Form\ProgramType;
 use App\Repository\ProgramRepository;
 use App\Service\Slugify;
+use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,6 +19,7 @@ use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 /**
  * @Route ("/programs", name="program_")
@@ -49,6 +51,7 @@ class ProgramController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $slug = $slugify->generate($program->getTitle());
             $program->setSlug($slug);
+            $program->setOwner($this->getUser());
             $entityManager->persist($program);
             $entityManager->flush();
 
@@ -93,7 +96,7 @@ class ProgramController extends AbstractController
     {
         if (!$program) {
             throw $this->createNotFoundException(
-                'No program with id : '.$programId.' found in program\'s table.'
+                'No program with id : '.$program->getId().' found in program\'s table.'
             );
         }
 
@@ -136,6 +139,46 @@ class ProgramController extends AbstractController
             'season'  => $season,
             'episode' => $episode,
             'form'    => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route ("/{program_slug}/seasons/{season}/episodes/{episode_slug}/comment/{comment}/delete", name="episode_delete_comment")
+     * @ParamConverter("program", class="App\Entity\Program", options={"mapping":{"program_slug":"slug"}})
+     * @ParamConverter("episode", class="App\Entity\Episode", options={"mapping":{"episode_slug":"slug"}})
+     */
+    public function deleteComments(Program $program, Season $season, Episode $episode, Comment $comment, EntityManagerInterface $entityManager)
+    {
+        $entityManager->remove($comment);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('program_episode_show', [
+            'program_slug' => $program->getSlug(),
+            'season'       => $season->getId(),
+            'episode_slug' => $episode->getSlug(),
+        ]);
+    }
+
+
+    /**
+     * @Route("/{slug}/edit", name="edit")
+     */
+    public function edit(Request $request, Program $program): Response
+    {
+        if ($this->getUser() !== $program->getOwner()) {
+            throw new AccessDeniedException('Only the owner can edit that program !');
+        }
+
+        $form = $this->createForm(ProgramType::class, $program);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+            return $this->redirectToRoute('program_index');
+        }
+
+        return $this->render('program/edit.html.twig', [
+           'program' => $program,
+            'form'   => $form->createView(),
         ]);
     }
 }

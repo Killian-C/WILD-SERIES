@@ -22,14 +22,14 @@ class ProgramType extends AbstractType
             ->add('title', TextType::class)
             ->add('summary', TextareaType::class)
             ->add('poster', UrlType::class)
-            //->add('category', null, ['choice_label' => 'name'])
-            ->add('category', EntityType::class, [
+            ->add('category', null, ['choice_label' => 'name'])
+            /*->add('category', EntityType::class, [
                 'class'        => Category::class,
                 'choice_label' => 'name',
                 'by_reference' => false,
                 'multiple'     => false,
                 'expanded'     => true,
-            ])
+            ])*/
             ->add('actors', EntityType::class, [
                 'class'        => Actor::class,
                 'choice_label' => 'selector',

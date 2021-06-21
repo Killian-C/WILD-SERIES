@@ -11,30 +11,39 @@
     </div>
     <div class="col-12 text-center my-3">
         {% if app.user %}
-
-                <div class="container form-container mt-2 mb-4">
-                    <div class="row mx-auto">
-                        <div class="col-12 d-flex flex-column align-items-center justify-content-center my-2">
-                            {{ form_start(form) }}
-                            <div class="me-4">{{ form_label(form.comment) }}</div>
-                            {{ form_widget(form.comment) }}
-                            {{ form_errors(form.comment) }}
-                        </div>
+            <div class="container form-container mt-2 mb-4">
+                <div class="row mx-auto">
+                    <div class="col-12 d-flex flex-column align-items-center justify-content-center my-2">
+                        {{ form_start(form) }}
+                        <div class="me-4">{{ form_label(form.comment) }}</div>
+                        {{ form_widget(form.comment) }}
+                        {{ form_errors(form.comment) }}
                     </div>
-                    <div class="row mx-auto">
-                        <div class="col-12 d-flex flex-column align-items-center justify-content-center my-2">
-                            <div class="me-4">{{ form_label(form.rate) }}</div>
-                            {{ form_widget(form.rate) }}
-                            {{ form_errors(form.rate) }}
-                        </div>
-                    </div>
-                    <input class="p-2 mx-auto mt-4" type="submit" value="Laisser un commentaire">
-                    {{ form_end(form) }}
                 </div>
-
-            {% for comment in episode.comments|reverse %}
-                <p class="mt-2"><span class="fst-italic p-2">{{ comment.author.email }} a commenté : </span><span  class="fw-bold p-2">{{ comment.comment }}</span> - Note : {{ comment.rate }} /5</p>
-            {% endfor %}
+                <div class="row mx-auto">
+                    <div class="col-12 d-flex flex-column align-items-center justify-content-center my-2">
+                        <div class="me-4">{{ form_label(form.rate) }}</div>
+                        {{ form_widget(form.rate) }}
+                        {{ form_errors(form.rate) }}
+                    </div>
+                </div>
+                <input class="p-2 mx-auto mt-4" type="submit" value="Laisser un commentaire">
+                {{ form_end(form) }}
+            </div>
         {% endif %}
+        {% for comment in episode.comments|reverse %}
+            <p class="mt-2"><span class="fst-italic p-2">{{ comment.author.email }} a commenté : </span><span  class="fw-bold p-2">{{ comment.comment }}</span> - Note : {{ comment.rate }} /5  -
+                {% if is_granted("ROLE_ADMIN") or app.user == comment.author %}
+                    <a class="ms-2 fst-italic" href="{{ path('program_episode_delete_comment', {
+                        'program_slug': program.slug,
+                        'season': season.id,
+                        'episode_slug': episode.slug,
+                        'comment': comment.id
+                    }) }}" >Delete</a>
+                {% endif %}
+            </p>
+
+        {% endfor %}
+
     </div>
 {% endblock %}
