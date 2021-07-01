@@ -18,7 +18,12 @@
                 <div class="card m-3">
                     <img src="{{ program.poster }}" class="card-img-top" alt="{{ program.title }}">
                     <div class="card-body">
-                        <h5 class="card-title">{{ program.title }}</h5>
+                        <div class="d-flex">
+                            <h5 class="card-title">{{ program.title }}</h5>
+                            <a class="ms-2" href="{{ path('program_watchlist', {id: program.id})}}">
+                                <i class="bi {{ app.user.isInWatchlist(program) ? 'bi-heart-fill' : 'bi-heart' }}"></i>
+                            </a>
+                        </div>
                         <p class="card-text">{{ program.summary }}</p>
                         <h6>Acteurs : </h6>
                         <ul>

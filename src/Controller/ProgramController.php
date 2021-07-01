@@ -191,4 +191,21 @@ class ProgramController extends AbstractController
             'form'   => $form->createView(),
         ]);
     }
+
+    /**
+     * @Route("/{id}/watchlist", name="watchlist")
+     */
+    public function addToWatchlist(Program $program, EntityManagerInterface $entityManager): Response
+    {
+        if ($this->getUser()->isInWatchlist($program)) {
+            $this->getUser()->removeFromWatchlist($program);
+        } else {
+            $this->getUser()->addToWatchlist($program);
+        }
+
+        $entityManager->flush();
+        return $this->redirectToRoute('program_show', [
+                'slug' => $program->getSlug(),
+            ]);
+    }
 }
