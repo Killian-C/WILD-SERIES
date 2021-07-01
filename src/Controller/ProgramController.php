@@ -72,7 +72,7 @@ class ProgramController extends AbstractController
                 ->html($this->renderView('program/newProgramEmail.html.twig', ['program' => $program]));
 
             $mailer->send($email);
-
+            $this->addFlash('success', 'Your program has been created !');
             return $this->redirectToRoute('program_index');
         }
 
