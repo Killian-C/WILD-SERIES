@@ -3,11 +3,11 @@
 {% block title %}All programs{% endblock %}
 
 {% block body %}
-    <h2 class="text-center mt-3">Toutes les séries</h2>
+    <h2 class="text-center mt-3">{{ 'programs.allseries'|trans }} </h2>
     <div class="text-center my-4">
         {{ form_start(form) }}
         {{ form_widget(form) }}
-        <input class="py-2 px-4 mx-auto mt-4" type="submit" value="Trouve !">
+        <input class="py-2 px-4 mx-auto mt-4" type="submit" value="{{ 'programs.fetch'|trans }} !">
         {{ form_end(form) }}
     </div>
     {% if programs is empty %}
@@ -21,7 +21,7 @@
                         <div class="d-flex">
                             <h5 class="card-title">{{ program.title }}</h5>
                             <a class="ms-2 watchlist" href="{{ path('program_watchlist', {id: program.id})}}">
-                                <i class="bi {{ app.user.isInWatchlist(program) ? 'bi-heart-fill' : 'bi-heart' }}"></i>
+                                <i class="bi {{ app.user and app.user.isInWatchlist(program) ? 'bi-heart-fill' : 'bi-heart' }}"></i>
                             </a>
                         </div>
                         <p class="card-text">{{ program.summary }}</p>
@@ -31,7 +31,7 @@
                             <li>{{ actor.name }}</li>
                         {% endfor %}
                         </ul>
-                        <a href="{{ path('program_show', {slug : program.slug})}}" class="panel-button p-2">Voir la fiche</a>
+                        <a href="{{ path('program_show', {slug : program.slug})}}" class="panel-button p-2">{{ 'programs.seedetails'|trans }} </a>
                     </div>
                 </div>
             {% endfor %}

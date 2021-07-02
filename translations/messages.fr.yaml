@@ -1,0 +1,13 @@
+hello_username: Salut %username%
+account:
+  logout: se déconnecter
+  login: se connecter
+home:
+  actors: Acteurs
+  series: Séries
+  favseries: Séries préférées
+programs:
+  allseries: Toutes les séries
+  seedetails: Voir la fiche
+  fetch: Rechercher
+

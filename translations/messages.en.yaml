@@ -1,0 +1,11 @@
+hello_username: Hello %username%
+account.logout: Logout
+account.login: Login
+home:
+  actors: Actors
+  series: Programs
+  favseries: Favorites programs
+programs:
+  allseries: All programs
+  seedetails: See more
+  fetch: Fetch

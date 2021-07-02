@@ -1,17 +1,24 @@
 <nav class="navbar sticky-top">
     <div class="container d-flex justify-content-between">
         <div class="row navbar-brand d-flex align-items-center justify-content-center m-0">
-            <a class="col-2 logo-bg d-flex align-items-center p-2 ms-3" href="/">
+            <a class="col-2 logo-bg d-flex align-items-center p-2 ms-3" href="/{{ app.request.locale }}">
                 <img class="logo text-center m-0 w-100" src="{{ asset('build/Logo2.png') }}" alt="logo">
             </a>
             <div class="col text-center sub-logo">WILD SERIES</div>
         </div>
         {% if app.user %}
-            {{ app.user.email }}
+            {% trans with {'%username%': app.user.email} %}
+                hello_username
+            {% endtrans %} !
             <a href="{{ path('user_profile') }}">Mon compte</a>
-            <a class="col-12 col-md-3 text-center" href="{{ path('app_logout') }}"> Se déconnecter</a>
+            <a class="col-12 col-md-3 text-center" href="{{ path('app_logout') }}">{{ 'account.logout'|trans }}</a>
         {% else %}
-            <a class="col-12 col-md-3 text-center" href="{{ path('app_login') }}"> Se connecter</a>
+            <a class="col-12 col-md-3 text-center" href="{{ path('app_login') }}"> {{ 'account.login'|trans }}</a>
         {% endif %}
+        <div>
+            <a href="{{ path('app_index', {'_locale': 'fr'}) }}">🇫🇷</a>
+            <span class="mx-2">|</span>
+            <a href="{{ path('app_index', {'_locale': 'en'}) }}">🇬🇧</a>
+        </div>
     </div>
 </nav>
