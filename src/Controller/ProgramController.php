@@ -202,10 +202,10 @@ class ProgramController extends AbstractController
         } else {
             $this->getUser()->addToWatchlist($program);
         }
-
         $entityManager->flush();
-        return $this->redirectToRoute('program_show', [
-                'slug' => $program->getSlug(),
-            ]);
+
+        return $this->json([
+            'isInWatchlist' => $this->getUser()->isInWatchlist($program)
+        ]);
     }
 }

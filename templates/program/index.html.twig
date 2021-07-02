@@ -20,7 +20,7 @@
                     <div class="card-body">
                         <div class="d-flex">
                             <h5 class="card-title">{{ program.title }}</h5>
-                            <a class="ms-2" href="{{ path('program_watchlist', {id: program.id})}}">
+                            <a class="ms-2 watchlist" href="{{ path('program_watchlist', {id: program.id})}}">
                                 <i class="bi {{ app.user.isInWatchlist(program) ? 'bi-heart-fill' : 'bi-heart' }}"></i>
                             </a>
                         </div>
