@@ -71,7 +71,7 @@ class CategoryController extends AbstractController
                 ->getRepository(Program::class)
                 ->findBy(
                     ['category' => $category],
-                    ['id' => 'DESC'],
+                    ['id' => 'ASC'],
                     $serieByCategoryNbMax
                 );
         }

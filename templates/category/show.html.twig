@@ -9,7 +9,7 @@
         <h1>Voici les dernières nouveautés correspondants à la catégorie {{ category.name }} : </h1>
         <ul>
             {% for program in programs %}
-                <li>{{ program.id }} / {{ program.title }} --- Résumé : {{ program.summary }} --- <a href="{{ path('program_show', {id : program.id}) }}">Voir sa fiche</a></li>
+                <li>{{ program.id }} / {{ program.title }} --- Résumé : {{ program.summary }} --- <a href="{{ path('program_show', {slug : program.slug}) }}">Voir sa fiche</a></li>
             {% endfor %}
         </ul>
     {% endif %}

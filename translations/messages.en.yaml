@@ -9,3 +9,5 @@ programs:
   allseries: All programs
   seedetails: See more
   fetch: Fetch
+navbar:
+  categories: Categories

@@ -10,4 +10,5 @@ programs:
   allseries: Toutes les séries
   seedetails: Voir la fiche
   fetch: Rechercher
-
+navbar:
+  categories: Catégories

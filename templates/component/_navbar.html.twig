@@ -15,6 +15,16 @@
         {% else %}
             <a class="col-12 col-md-3 text-center" href="{{ path('app_login') }}"> {{ 'account.login'|trans }}</a>
         {% endif %}
+
+        <div class="dropdown">
+            <a class="btn panel-button dropdown-toggle text-light" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                {{ 'navbar.categories'|trans }}
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                {{ render(controller('App\\Controller\\DefaultController::navbarTop')) }}
+            </ul>
+        </div>
+
         <div>
             <a href="{{ path('app_index', {'_locale': 'fr'}) }}">🇫🇷</a>
             <span class="mx-2">|</span>
