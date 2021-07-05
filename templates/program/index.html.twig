@@ -16,7 +16,7 @@
         <div class="d-flex flex-wrap justify-content-center">
             {% for program in programs %}
                 <div class="card m-3">
-                    <img src="{{ program.poster }}" class="card-img-top" alt="{{ program.title }}">
+                    <img src="{{ (program.updatedAt) ? '/uploads/' ~ program.poster : program.poster }}" class="card-img-top" alt="{{ program.title }}">
                     <div class="card-body">
                         <div class="d-flex">
                             <h5 class="card-title">{{ program.title }}</h5>

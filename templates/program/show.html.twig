@@ -13,7 +13,7 @@
 </div>
 <div class="d-flex justify-content-center mb-5">
     <div class="card mx-2">
-        <img class="card-img-top" src="{{program.poster}}" alt="{{ program.title }} poster">
+        <img class="card-img-top" src="{{ (program.updatedAt) ? '/uploads/' ~ program.poster : program.poster }}" alt="{{ program.title }} poster">
         <div class="card-body">
             <p class="card-text">{{ program.summary }}</p>
             <p class="card-text">Catégorie : {{ program.category.name }}</p>
